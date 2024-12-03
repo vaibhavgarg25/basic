@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Api</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body id="body">
+    <button id="bt1"></button>
+    <h1>Welcome to Weather Api</h1>
+        <div class="container">
+            <div class="searchbar">
+                <input  type="text" name="search" id="city" placeholder="enter city">
+                <button id="btn">search</button>
+            </div>
+           <div class="details" id="details">
+             <div class="cityname">
+                   <h1 id="name">name</h1>
+               </div>
+               <div class="weather">
+                   <div class="tdy">
+                      <h3>temperature:<p style="display: inline;" id="temp"></p></h3>
+                        <h3>windspeed:<p style="display: inline;" id="wind"></p></h3>
+                      <h3>description:<p style="display: inline;" id="desc"></p></p>
+                    </div>
+                   <div class="forecast">
+                        <div class="day1">
+                            <p>DAY1</p>
+                            <h3 id="temp1">temp</h3>
+                            <h3 id="wind1">windspeed</h3>
+                        </div> 
+                        <div class="day2">
+                            <p>DAY2</p>
+                            <h3 id="temp2">temp</h3>
+                            <h3 id="wind2">windspeed</h3>
+                        </div>
+                        <div class="day3">
+                            <p>DAY3</p>
+                            <h3 id="temp3">temp</h3>
+                            <h3 id="wind3">windspeed</h3>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <script src="weather.js"></script>
+</body>
+</html>
