@@ -70,7 +70,7 @@ const login=async(req,res)=>{
 const user=async(req,res)=>{
    try {
       const userdata=req.user;
-      console.log(userdata)
+      // console.log(userdata)
       return res.status(200).json({userdata})
    } catch (error) {
       console.log(`error from the user route ${error}`)
@@ -136,4 +136,14 @@ const servicedata=async(req,res)=>{
    }
 }
 
-module.exports={home,weather,register,login,user,contact,service,userdata,contactdata,servicedata}
+const deleteuserbyid=async(req,res)=>{
+try {
+   const id=req.params.id;
+   await User.deleteOne({_id:id});
+   return res.status(200).json({message:"user deleted successfully"})
+} catch (error) {
+   next(error)
+}
+}
+
+module.exports={home,weather,register,login,user,contact,service,userdata,contactdata,servicedata,deleteuserbyid}

@@ -7,6 +7,10 @@ import Contact from './pages/contact';
 import Error from './pages/Error'
 import Logout from './pages/Logout';
 import Service from './pages/Service';
+import Admin from './pages/Admin';
+import User from './pages/User';
+import Contactuser from './pages/Contactuser';
+import ServiceAdmin from './pages/ServiceAdmin';
 
 function App() {
   return (
@@ -20,6 +24,11 @@ function App() {
       <Route path="/logout" element={<Logout/>} />
       <Route path="/service" element={<Service/>} />
       <Route path="*" element={<Error/>} />
+      <Route path="/admin" element={<Admin/>} >
+        <Route path="user" element={<User/>} />
+        <Route path="contact" element={<Contactuser/>} />
+        <Route path="service" element={<ServiceAdmin/>} />
+      </Route>
     </Routes>
     </BrowserRouter>
     </>
