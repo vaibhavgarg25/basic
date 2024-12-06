@@ -7,10 +7,6 @@ const signupschema=require('./validators/auth-validator')
 const authmiddleware=require('./middlewares/auth-middleware')
 const loginschema = require('./validators/login-validator')
 
-router.use((req,res,next)=>{
-    console.log("hey this is my first middlware")
-    next()
-})
 router.route('/Home').get(authcontrollers.home);
 router.route('/weather').get(authcontrollers.weather);
 router.route('/register').post(validate(signupschema),authcontrollers.register);

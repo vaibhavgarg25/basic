@@ -17,10 +17,6 @@ const corsOption={
 app.use(cors(corsOption));
 app.use(express.json())
 
-app.use((req,res,next)=>{
-  console.log("hello")
-  next()
-})
 app.use('/routes',routes)
 app.use('/admin',admin)
 app.use(express.static('public'));
