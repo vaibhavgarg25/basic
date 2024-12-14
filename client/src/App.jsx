@@ -11,6 +11,7 @@ import Admin from './pages/Admin';
 import User from './pages/User';
 import Contactuser from './pages/Contactuser';
 import ServiceAdmin from './pages/ServiceAdmin';
+import Adminupdate from './pages/Adminupdate';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="contact" element={<Contactuser/>} />
         <Route path="service" element={<ServiceAdmin/>} />
       </Route>
+      <Route path="/admin/user/:userId/edit" element={<Adminupdate/>} />
     </Routes>
     </BrowserRouter>
     </>

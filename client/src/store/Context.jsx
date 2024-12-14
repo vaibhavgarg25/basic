@@ -8,6 +8,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [Token, setToken] = useState(localStorage.getItem("token"));
   const [user,setuser]=useState("")
+  const [isloading,setloading]=useState(true)
   const [servicedata,setdata]=useState("")
    const AuthorizationToken=`Bearer ${Token}`
   
@@ -28,6 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   const userAuthentication = async () => {
     try {
+      setloading(true)
       const response = await fetch("http://localhost:3000/routes/user", {
         method: "GET",
         headers: {
@@ -36,9 +38,13 @@ export const AuthProvider = ({ children }) => {
       });
       if(response.ok){
         const data=await response.json()
-        console.log(data)
-        console.log("user data",data.userdata)
+        // console.log(data)
+        // console.log("user data",data.userdata)
         setuser(data.userdata);
+        setloading(false)
+    }
+    else{
+      setloading(false)
     }
     } catch (error) {
       console.log("error fetching the data");
@@ -53,7 +59,7 @@ export const AuthProvider = ({ children }) => {
       })
       if(response.ok){
         const data=await response.json()
-        console.log(data)
+        // console.log(data)
         setdata(data)
       }
     } catch (error) {
@@ -68,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storetokeninls, LogoutUser ,user ,servicedata ,AuthorizationToken}}>
+    <AuthContext.Provider value={{ isLoggedIn,isloading, storetokeninls, LogoutUser ,user ,servicedata ,AuthorizationToken}}>
       {children}
     </AuthContext.Provider>
   );
