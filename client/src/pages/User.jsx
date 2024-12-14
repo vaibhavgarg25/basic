@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import { useAuth } from '../store/Context'
+import {Link} from 'react-router-dom'
 
 
 const User = () => {
@@ -22,10 +23,6 @@ const User = () => {
       getdata()
     }, [])
     
-
-    const updateuser=()=>{
-
-    }
 
     const deleteuser=async(id)=>{
         const response=await fetch(`http://localhost:3000/admin/users/delete/${id}`,{
@@ -62,7 +59,7 @@ const User = () => {
                         <td>{curr.username}</td>
                         <td  className='relative left-5'>{curr.email}</td>
                         <td  className='relative left-10'>{curr.phone}</td>
-                        <td className='relative left-16'><button onClick={()=>updateuser(curr._id)}>Update</button></td>
+                        <td className='relative left-16 z-20'><Link to={`/admin/user/${curr._id}/edit`}>Edit</Link></td>
                         <td  className='relative left-24 z-20'><button onClick={()=>deleteuser(curr._id)}>Delete</button></td>
                     </tr>
                 })}

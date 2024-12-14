@@ -1,14 +1,21 @@
 import React from 'react'
-import { NavLink,Outlet } from 'react-router-dom';
+import { Navigate, NavLink,Outlet } from 'react-router-dom';
+import { useAuth } from '../store/Context';
 
 const Admin = () => {
-
-    return (
+  const {user,isloading}=useAuth()
+  if(isloading){
+    return <h1>Loading...</h1>
+  }
+  if(!user.isAdmin){
+    return <Navigate to="/"/>
+  }
+  return (
         <>
       <header className="w-screen fixed  bg-transparent top-0 left-0 z-20">
-        <div className="container flex justify-between items-center px-6  border-2 border-[#646cff] w-40 h-screen">
+        <div className="container flex justify-between px-6 mt-10  border-[#646cff]  h-screen">
           <nav>
-            <ul className="flex flex-col space-y-8 text-lg text-white">
+            <ul className="flex space-x-8 text-lg text-white">
               <li>
                 <NavLink className="underline-hover" to="/admin/user">
                   User

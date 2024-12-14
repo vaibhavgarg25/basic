@@ -9,5 +9,7 @@ router.route('/user').get(authmiddleware,adminmiddleware,authcontrollers.userdat
 router.route('/contact').get(authmiddleware,adminmiddleware,authcontrollers.contactdata)
 router.route('/service').get(authmiddleware,adminmiddleware,authcontrollers.servicedata)
 router.route('/users/delete/:id').delete(authmiddleware,adminmiddleware,authcontrollers.deleteuserbyid)
-
+router.route('/contact/delete/:id').delete(authmiddleware,adminmiddleware,authcontrollers.deletecontactbyid)
+router.route('/users/:id').get(authmiddleware,adminmiddleware,authcontrollers.getusersbyid)
+router.route('/users/update/:id').patch(authmiddleware,adminmiddleware,authcontrollers.updateusersbyid)
 module.exports=router
